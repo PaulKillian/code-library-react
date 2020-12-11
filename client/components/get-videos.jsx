@@ -10,7 +10,7 @@ export default class GetVideos extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key=AIzaSyA--QcXTr0h8r80hjzA4S8e5Ot2C11bIAY', {
+    fetch('https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=surfing&maxResults=25&q=surfing&key=AIzaSyA--QcXTr0h8r80hjzA4S8e5Ot2C11bIAY', {
       headers: {
         Accept: 'application/json'
       },
