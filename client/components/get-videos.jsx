@@ -18,14 +18,17 @@ export default class GetVideos extends React.Component {
     })
       .then(res => res.json())
       .then(videos => {
-        const vid1 = videos.items[0].snippet.thumbnails.default.url;
-        this.setState({ videos: vid1 });
+        const vid1 = videos.items[0].id.videoId;
+        const youLink = `https://www.youtube.com/embed/${vid1}`
+        this.setState({ videos: youLink });
       });
   }
 
   render() {
     return (
-      <img src={this.state.videos}></img>
+      <iframe width="420" height="315"
+        src={this.state.videos}>
+      </iframe>
     );
   }
 }
