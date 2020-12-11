@@ -2,7 +2,7 @@ import React from 'react';
 
 function Cards() {
   return (
-    <div className="contain container-fluid mt-4">
+    <div className="contain container-fluid mt-4 ml-5">
       <div className="card">
         <h3 className="title">Card 1</h3>
       </div>
