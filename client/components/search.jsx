@@ -19,7 +19,9 @@ class Search extends React.Component {
   }
 
   handleSubmit(event) {
-    FullAlgos()
+    const cards = document.getElementById('cards')
+    // cards.classList.remove('slide')
+    cards.classList.add('slide-out')
     event.preventDefault();
     // this.props.handleFormSubmit(this.state.term);
   }

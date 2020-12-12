@@ -13,9 +13,11 @@ export default class AlgoCards extends React.Component {
 	}
 
 	componentDidMount() {
-		fetch('https://www.googleapis.com/customsearch/v1/?q=algorithmchallenges&key=AIzaSyA--QcXTr0h8r80hjzA4S8e5Ot2C11bIAY&cx=d2497e17a0fa9a70d', {
+		fetch('https://custom-search.p.rapidapi.com/api/search/CustomWebSearchAPIV2?q=react&searchEngineId=225781483726139679&pageNumber=5', {
 			headers: {
-				Accept: 'application/json'
+				'Content-Type': 'application/json',
+				'X-RapidAPI-Host': 'custom-search.p.rapidapi.com',
+				'X-RapidAPI-Key': 'a3648c9cb4mshd3b431b038463fbp1aeb59jsn73e1cdc213d6'
 			},
 			body: JSON.stringify()
 		})

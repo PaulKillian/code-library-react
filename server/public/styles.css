@@ -1,3 +1,7 @@
+body, html {
+  overflow-x: hidden;
+}
+
 .top {
 	z-index: 1;
 }
@@ -52,6 +56,40 @@
   left: 0px;
   margin-left: 1px;
 }
+
+.slide {
+  animation-name: slide;
+  animation-duration: 1s;
+}
+
+@keyframes slide {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+.slide-out {
+  animation-name: slide;
+  animation-duration: 1s;
+}
+
+@keyframes slide-out {
+  from {
+    margin-left: 0%;
+    width: 100%;
+  }
+  to {
+    margin-left: 100%;
+    width: 300%;
+  }
+}
+
 
 .cards:not(:first-child) {
     margin-left: -50px;
