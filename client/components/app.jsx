@@ -1,8 +1,10 @@
 import React from 'react';
 import Landing from './landing';
 import Button from './button';
-import GetVideos from './get-videos';
 import Search from './search';
+import VideoCards from './video-cards';
+import BookCards from './book-cards';
+import ArticleCards from './article-cards';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -13,36 +15,14 @@ export default class App extends React.Component {
     };
   }
 
-  // handleSubmit(termFromSearchBar) {
-  //   const response = youtube.get('/search', {
-  //     params: {
-  //       q: termFromSearchBar
-  //     }
-  //   });
-  //   this.setState({
-  //     videos: response.data.items
-  //   });
-  // }
-
-  handleVideoSelect(video) {
-    this.setState({ selectedVideo: video });
-  }
-
-  componentDidMount() {
-    fetch('/api/health-check')
-      .then(res => res.json())
-      .then(data => this.setState({ message: data.message || data.error }))
-      .catch(err => this.setState({ message: err.message }))
-      .finally(() => this.setState({ isLoading: false }));
-  }
 
   render() {
     return (
       <>
         <Landing />
-        <Button />
-        <GetVideos />
-        <Search />
+        <VideoCards />
+        <BookCards />
+        <ArticleCards />
       </>
     );
   }

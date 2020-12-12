@@ -55,10 +55,10 @@ button {
   display: flex;
 }
 
-.card {
+.cards {
   display: flex;
   height: 280px;
-  width: 300px;
+  width: 18rem;
   background-color: #17141d;
   border-radius: 10px;
   box-shadow: -.3rem 0 5rem #000;
@@ -68,16 +68,16 @@ button {
   left: 0px;
 }
 
-.card:not(:first-child) {
+.cards:not(:first-child) {
     margin-left: -50px;
 }
 
-.card:hover {
+.cards:hover {
   transform: translateY(-20px);
   transition: 0.4s ease-out;
 }
 
-.card:hover ~ .card {
+.cards:hover ~ .cards {
   position: relative;
   left: 50px;
   transition: 0.4s ease-out;
