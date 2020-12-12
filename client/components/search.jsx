@@ -11,6 +11,7 @@ class Search extends React.Component {
   }
 
   handleChange(event) {
+    console.log(event.target.value)
     this.setState({
       term: event.target.value
     });
@@ -24,7 +25,7 @@ class Search extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div>
+        <div className="flex justify-content-column">
           <label htmlFor="video-search">Video Search</label>
           <input onChange={this.handleChange} name='video-search'
             type='text' value={this.state.term}></input>
