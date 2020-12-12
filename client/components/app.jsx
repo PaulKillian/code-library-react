@@ -5,6 +5,8 @@ import Search from './search';
 import VideoCards from './video-cards';
 import BookCards from './book-cards';
 import ArticleCards from './article-cards';
+import AlgoCards from './algo-cards'
+
 
 export default class App extends React.Component {
   constructor(props) {
@@ -23,6 +25,7 @@ export default class App extends React.Component {
         <VideoCards />
         <BookCards />
         <ArticleCards />
+        <AlgoCards />
       </>
     );
   }

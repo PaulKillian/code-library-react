@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 const Card = lazy(() => import('./card'));
 const Search = lazy(() => import('./search'));
-const ArticleCard = lazy(() => import('./book-card'));
+const ArticleCard = lazy(() => import('./article-card'));
 const renderLoader = () => <p>...Loading</p>;
 
 export default class ArticleCards extends React.Component {
@@ -13,7 +13,7 @@ export default class ArticleCards extends React.Component {
 	}
 
 	componentDidMount() {
-		fetch('https://customsearch.googleapis.com/customsearch/v1?q=javascriptarticles&key=AIzaSyA--QcXTr0h8r80hjzA4S8e5Ot2C11bIAY&cx=d2497e17a0fa9a70d', {
+		fetch('https://www.googleapis.com/customsearch/v1/?q=javascriptarticles&key=AIzaSyA--QcXTr0h8r80hjzA4S8e5Ot2C11bIAY&cx=d2497e17a0fa9a70d', {
 			headers: {
 				Accept: 'application/json'
 			},
@@ -34,13 +34,11 @@ export default class ArticleCards extends React.Component {
 					// article[`thumbnail`] = articles.items[i].pagemape[i].cse_thumbnail[i].src;
 				}
 				for (let i = 0; i < pagemap.length; i++) {
-					n.push(pagemap[i].cse_thumbnail)
+					n.push(pagemap[i].cse_image)
 				}
 				for (let i = 0; i < n.length; i++) {
-					if (n[i].src === undefined) {
-						continue;
-					}
-					c.push(n[i].src)
+					c.push(n[i])
+
 					// console.log(n)
 				}
 

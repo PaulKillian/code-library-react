@@ -1,4 +1,5 @@
 import React from 'react';
+import FullAlgos from './full-algos'
 
 class Search extends React.Component {
   constructor(props) {
@@ -18,8 +19,9 @@ class Search extends React.Component {
   }
 
   handleSubmit(event) {
+    FullAlgos()
     event.preventDefault();
-    this.props.handleFormSubmit(this.state.term);
+    // this.props.handleFormSubmit(this.state.term);
   }
 
   render() {
@@ -29,6 +31,7 @@ class Search extends React.Component {
           <label htmlFor="video-search">Video Search</label>
           <input onChange={this.handleChange} name='video-search'
             type='text' value={this.state.term}></input>
+          <button type="submit">click</button>
         </div>
       </form>
     );
