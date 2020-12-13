@@ -13,7 +13,7 @@ export default class VideoCards extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=css&maxResults=4&q=css&key=AIzaSyA--QcXTr0h8r80hjzA4S8e5Ot2C11bIAY', {
+    fetch('https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=css&maxResults=9&q=css&key=AIzaSyA--QcXTr0h8r80hjzA4S8e5Ot2C11bIAY', {
       headers: {
         Accept: 'application/json'
       },

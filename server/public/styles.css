@@ -1,3 +1,7 @@
+body, html {
+  overflow-x: hidden;
+}
+
 .top {
 	z-index: 1;
 }
@@ -14,25 +18,6 @@
 	background-color: #E9E9EB;
 }
 
-button {
-	/* background-color: #B60CD6; */
-	height: 49.2vh;
-	margin-bottom: 10px;
-  top: calc(50% - 150px);
-  left: calc(50% - 150px);
-	border: none;
-  border-radius: 50%;
-  box-shadow:
-    /* inset 0 0 50px #E72DFA, */
-    inset -10px 0 40px #0C6C8C,
-    inset -20px 0 80px #FCFCF8,
-    inset -10px 0 40px #0C6C8C,
-    inset -20px 0 300px #FCFCF8,
-    0 0 5px #0C6C8C,
-    -5px 0 40px #0C6C8C,
-    10px 0 40px #FCFCF8
-}
-
 .color {
 	color: #150F38
 }
@@ -46,6 +31,9 @@ button {
 	filter: drop-shadow(0.10rem 0.10rem 0.10rem rgb(105, 105, 105));
 }
 
+.card {
+  min-width: 180px;
+}
 
 .contain {
   height: 300px;
@@ -66,14 +54,50 @@ button {
   transition: 0.4s ease-out;
   position: relative;
   left: 0px;
+  margin-left: 1px;
 }
+
+.slide {
+  animation-name: slide;
+  animation-duration: 1s;
+}
+
+@keyframes slide {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+.slide-out {
+  animation-name: slide;
+  animation-duration: 1s;
+}
+
+@keyframes slide-out {
+  from {
+    margin-left: 0%;
+    width: 100%;
+  }
+  to {
+    margin-left: 100%;
+    width: 300%;
+  }
+}
+
 
 .cards:not(:first-child) {
     margin-left: -50px;
 }
 
 .cards:hover {
-  transform: translateY(-20px);
+  transform: scale(1.5);
+  z-index: 1;
   transition: 0.4s ease-out;
 }
 

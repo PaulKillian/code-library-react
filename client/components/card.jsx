@@ -2,7 +2,7 @@ import React from 'react'
 
 function Card(props) {
 	return (
-		<div className="card">SAVE
+		<div className="cards card">SAVE
 			<iframe width="290" height="315"
 				src={props.src}>
 			</iframe>
@@ -11,3 +11,4 @@ function Card(props) {
 }
 
 export default Card
+

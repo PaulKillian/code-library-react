@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ArticleCard(props) {
+function AlgoCard(props) {
 	return (
 		<div className="cards card">
 			<div className="text-white">{props.title}</div>
@@ -9,4 +9,4 @@ function ArticleCard(props) {
 	)
 }
 
-export default ArticleCard
+export default AlgoCard
