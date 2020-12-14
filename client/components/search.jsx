@@ -20,10 +20,18 @@ class Search extends React.Component {
 
   handleSubmit(event) {
     const cards = document.getElementById('cards')
-    // cards.classList.remove('slide')
     cards.classList.add('slide-out')
     event.preventDefault();
-    // this.props.handleFormSubmit(this.state.term);
+    const subject = { subject: this.state }
+    fetch(`/api/add-video/${ subject }`, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(profileData)
+  })
+    .then(res => res.json())
+    .then(data => {
+
   }
 
   render() {

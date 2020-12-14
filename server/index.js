@@ -19,6 +19,13 @@ app.get('/api/health-check', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('api/add-video/:subject', (req, res, next) => {
+  const subject = 'javascript';
+  const URL = req.body.video;
+  const add = `
+  `
+})
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });

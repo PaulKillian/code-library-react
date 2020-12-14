@@ -12,21 +12,24 @@ export default class VideoCards extends React.Component {
     };
   }
 
-  componentDidMount() {
-    fetch('https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=css&maxResults=9&q=css&key=AIzaSyA--QcXTr0h8r80hjzA4S8e5Ot2C11bIAY', {
-      headers: {
-        Accept: 'application/json'
-      },
-      body: JSON.stringify()
-    })
-      .then(res => res.json())
-      .then(videos => {
-        let ids = []
-        for (let i = 0; i < videos.items.length; i++) {
-          ids.push(`https://www.youtube.com/embed/${videos.items[i].id.videoId}`)
-          }
-        this.setState({ videos: ids });
-      });
+
+
+  // componentDidMount() {
+  //   fetch('https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=css&maxResults=9&q=css&key=AIzaSyA--QcXTr0h8r80hjzA4S8e5Ot2C11bIAY', {
+  //     headers: {
+  //       Accept: 'application/json'
+  //     },
+  //     body: JSON.stringify()
+  //   })
+  //     .then(res => res.json())
+  //     .then(videos => {
+  //       let ids = []
+  //       for (let i = 0; i < videos.items.length; i++) {
+  //         ids.push(`https://www.youtube.com/embed/${videos.items[i].id.videoId}`)
+  //         }
+  //       this.setState({ videos: ids });
+  //       console.log(this.state.video)
+  //     });
   }
 
   render() {

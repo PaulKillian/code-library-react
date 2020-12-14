@@ -12,49 +12,49 @@ export default class ArticleCards extends React.Component {
 		};
 	}
 
-	componentDidMount() {
-		fetch('https://www.googleapis.com/customsearch/v1/?q=javascriptarticles&key=AIzaSyA--QcXTr0h8r80hjzA4S8e5Ot2C11bIAY&cx=d2497e17a0fa9a70d', {
-			headers: {
-				Accept: 'application/json'
-			},
-			body: JSON.stringify()
-		})
-			.then(res => res.json())
-			.then(articles => {
-				let newArticles = []
-				let pagemap = []
-				let n = []
-				let c = []
-				for (let i = 0; i < articles.items.length; i++) {
-					let article = {};
-					article[`title`] = articles.items[i].title;
-					article[`link`] = articles.items[i].link;
-					pagemap.push(articles.items[i].pagemap);
-					newArticles.push(article);
-					// article[`thumbnail`] = articles.items[i].pagemape[i].cse_thumbnail[i].src;
-				}
-				for (let i = 0; i < pagemap.length; i++) {
-					n.push(pagemap[i].cse_image)
-				}
-				for (let i = 0; i < n.length; i++) {
-					c.push(n[i])
+	// componentDidMount() {
+	// 	fetch('https://www.googleapis.com/customsearch/v1/?q=javascriptarticles&key=AIzaSyA--QcXTr0h8r80hjzA4S8e5Ot2C11bIAY&cx=d2497e17a0fa9a70d', {
+	// 		headers: {
+	// 			Accept: 'application/json'
+	// 		},
+	// 		body: JSON.stringify()
+	// 	})
+	// 		.then(res => res.json())
+	// 		.then(articles => {
+	// 			let newArticles = []
+	// 			let pagemap = []
+	// 			let n = []
+	// 			let c = []
+	// 			for (let i = 0; i < articles.items.length; i++) {
+	// 				let article = {};
+	// 				article[`title`] = articles.items[i].title;
+	// 				article[`link`] = articles.items[i].link;
+	// 				pagemap.push(articles.items[i].pagemap);
+	// 				newArticles.push(article);
+	// 				// article[`thumbnail`] = articles.items[i].pagemape[i].cse_thumbnail[i].src;
+	// 			}
+	// 			for (let i = 0; i < pagemap.length; i++) {
+	// 				n.push(pagemap[i].cse_image)
+	// 			}
+	// 			for (let i = 0; i < n.length; i++) {
+	// 				c.push(n[i])
 
-					// console.log(n)
-				}
+	// 				// console.log(n)
+	// 			}
 
 
-				// for (let i = 0; i < articles.items.length; i++) {
-				// 	let article = {};
-				// 	article[`thumbnail`] = articles.items[i].volumeInfo.title;
-				// }
-				// }
-				console.log(c)
+	// 			// for (let i = 0; i < articles.items.length; i++) {
+	// 			// 	let article = {};
+	// 			// 	article[`thumbnail`] = articles.items[i].volumeInfo.title;
+	// 			// }
+	// 			// }
+	// 			console.log(c)
 
-				// this.setState({
-				// 	articles: newarticles
-				// });
-			});
-	}
+	// 			// this.setState({
+	// 			// 	articles: newarticles
+	// 			// });
+	// 		});
+	// }
 
 	render() {
 		console.log(this.state)
