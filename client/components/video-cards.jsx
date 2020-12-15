@@ -7,7 +7,7 @@ export default class VideoCards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videos: [],
+      videoURLS: [],
       selectedVideo: null
     };
   }
@@ -30,19 +30,33 @@ export default class VideoCards extends React.Component {
   //       this.setState({ videos: ids });
   //       console.log(this.state.video)
   //     });
+
+  // }
+
+  componentDidMount() {
+    fetch(`/api/add-video/css`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(urls => {
+      this.setState({
+        videoURLS: urls
+      })
+    });
   }
 
   render() {
-    console.log(this.state.videos)
+    console.log(this.state.videoURLS)
     return (
       <Suspense fallback={renderLoader()}>
-        <Search />
         <div className="container-fluid">
           <div className="flex justif-content-around">
             <div className="contain container-fluid mt-4 ml-5">
-              {this.state.videos.map(video => {
+              {this.state.videoURLS.map(video => {
                 return (
-                  <Card src={video} />
+                  <Card src={video.URL} />
                 );
               })}
             </div>

@@ -60,7 +60,6 @@ export default class AlgoCards extends React.Component {
 		console.log(this.state)
 		return (
 			<Suspense fallback={renderLoader()}>
-				<Search />
 				<div className="container-fluid">
 					<div className="flex justif-content-around">
 						<div className="contain container-fluid mt-4 ml-5">
