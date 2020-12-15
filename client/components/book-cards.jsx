@@ -37,7 +37,6 @@ export default class BookCards extends React.Component {
 	render() {
 		return (
 			<Suspense fallback={renderLoader()}>
-				<Search />
 				<div id="cards" className="container-fluid">
 					<div className="flex justif-content-around">
 						<div className="contain container-fluid mt-4 ml-5">

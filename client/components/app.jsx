@@ -12,21 +12,50 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videos: [],
-      selectedVideo: null
+      videosURLS: [],
+      subject: 'javascript'
     };
+    this.passVideoURLS = this.passVideoURLS.bind(this)
+    this.setView = this.setView.bind(this)
   }
 
+  passVideoURLS(urls) {
+    this.setState({ videoURLS: urls })
+  }
+
+  setView(subject) {
+    this.setState({ subject: 'javascript'})
+  }
 
   render() {
-    return (
-      <>
-        <Landing />
-        <VideoCards />
-        <BookCards />
-        <ArticleCards />
-        <AlgoCards />
-      </>
-    );
+    if (this.state.subject === 'javascript') {
+      return (
+        <>
+          <Landing />
+          <Search pass={this.passVideoURLS} setView={this.setView}/>
+          <VideoCards urls={this.state.videosURLS} />
+          <Search />
+          <BookCards />
+          <Search />
+          <ArticleCards />
+          <Search />
+          <AlgoCards />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Landing />
+          <Search pass={this.passVideoURLS} />
+          <VideoCards urls={this.state.videosURLS} />
+          <Search />
+          <BookCards />
+          <Search />
+          <ArticleCards />
+          <Search />
+          <AlgoCards />
+        </>
+      );
+    }
   }
 }
