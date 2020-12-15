@@ -15,7 +15,7 @@ export default class VideoCards extends React.Component {
 
 
   // componentDidMount() {
-  //   fetch('https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=css&maxResults=9&q=css&key=AIzaSyA--QcXTr0h8r80hjzA4S8e5Ot2C11bIAY', {
+  //   fetch('https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=reactjs&maxResults=25&q=reactjs&key=AIzaSyA--QcXTr0h8r80hjzA4S8e5Ot2C11bIAY', {
   //     headers: {
   //       Accept: 'application/json'
   //     },
@@ -27,14 +27,13 @@ export default class VideoCards extends React.Component {
   //       for (let i = 0; i < videos.items.length; i++) {
   //         ids.push(`https://www.youtube.com/embed/${videos.items[i].id.videoId}`)
   //         }
-  //       this.setState({ videos: ids });
-  //       console.log(this.state.video)
+  //       this.setState({ videoURLS: ids });
   //     });
 
   // }
 
   componentDidMount() {
-    fetch(`/api/add-video/css`, {
+    fetch(`/api/add-video/reactjs`, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -56,7 +55,9 @@ export default class VideoCards extends React.Component {
             <div className="contain container-fluid mt-4 ml-5">
               {this.state.videoURLS.map(video => {
                 return (
-                  <Card src={video.URL} />
+                  <Suspense fallback={renderLoader()}>
+                    <Card src={video.URL} />
+                  </Suspense>
                 );
               })}
             </div>
