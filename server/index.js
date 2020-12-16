@@ -14,7 +14,7 @@ app.use(sessionMiddleware);
 app.use(express.json());
 
 process.on('uncaughtException', function (err) {
-    console.log(err);
+  console.log(err);
 });
 
 app.get('/api/health-check', (req, res, next) => {
@@ -25,21 +25,19 @@ app.get('/api/health-check', (req, res, next) => {
 
 app.get('/api/add-video/:subject', (req, res, next) => {
   let subject = req.params.subject;
-  if (subject === "css") {
-    subject = subject.toUpperCase()
+  if (subject === 'css') {
+    subject = subject.toUpperCase();
   }
   const getVideo = `
     select "URL"
       from "video"
       where "subject" = $1
-  `
+  `;
   const params = [subject];
   db.query(getVideo, params)
     .then(result => res.status(200).json(result.rows))
-    .catch(err => next(err))
+    .catch(err => next(err));
 });
-
-
 
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
