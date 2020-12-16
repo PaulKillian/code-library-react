@@ -1,11 +1,13 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Carousel from 'react-bootstrap/Carousel';
+import React from 'react';
 
-export default function Card(props) {
-	return (
-			<iframe height="100vh" className="carousel-iframe"
-				src={props.src}>
-			</iframe>
-	);
+function Card(props) {
+  return (
+    <div className="carousel-slide">SAVE
+      <iframe width="290" height="315"
+        src={props.src}>
+      </iframe>
+    </div>
+  );
 }
+
+export default Card;
