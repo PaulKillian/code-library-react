@@ -1,7 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 const Card = lazy(() => import('./card'));
-const Search = lazy(() => import('./search'));
 const renderLoader = () => <p>...Loading</p>;
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Carousel from 'react-bootstrap/Carousel';
 
 export default class VideoCards extends React.Component {
   constructor(props) {
@@ -38,32 +39,31 @@ export default class VideoCards extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-    .then(res => res.json())
-    .then(urls => {
-      this.setState({
-        videoURLS: urls
-      })
-    });
+      .then(res => res.json())
+      .then(urls => {
+        this.setState({
+          videoURLS: urls
+        })
+      });
   }
 
+
   render() {
-    console.log(this.state.videoURLS)
     return (
-      <Suspense fallback={renderLoader()}>
-        <div className="container-fluid">
-          <div className="flex justif-content-around">
-            <div className="contain container-fluid mt-4 ml-5">
+      <div class="carousel-wrapper">
+        <div class="carousel">
+          <img class="carousel-iframe initial" src="./images/code8.gif"></img>
+          <Suspense fallback={renderLoader()}>
               {this.state.videoURLS.map(video => {
                 return (
-                  <Suspense fallback={renderLoader()}>
-                    <Card src={video.URL} />
-                  </Suspense>
+                  <Card src={video.URL} />
                 );
               })}
-            </div>
-          </div>
+          </Suspense>
+          <div class="carousel-button-next"></div>
+          <div class="carousel-button-prev"></div>
         </div>
-      </Suspense>
+      </div>
     );
   }
 }
