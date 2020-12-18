@@ -57,28 +57,48 @@ body, html {
   margin-left: 1px;
 }
 
-.slide-0 {
-  animation-name: slide-0;
-  animation-duration: .2s;
+.slide-left-1 {
+  animation-name: slide-left-1;
+  animation-duration: .5s;
 }
-.slide-1 {
-  animation-name: slide-1;
-  animation-duration: .2s;
+.slide-right-1 {
+  animation-name: slide-right-1;
+  animation-duration: .5s;
 }
-.slide-2 {
-  animation-name: slide-2;
-  animation-duration: .2s;
+.slide-left-2 {
+  animation-name: slide-left-2;
+  animation-duration: .5s;
 }
-.slide-3 {
-  animation-name: slide-3;
-  animation-duration: .2s;
+.slide-right-2 {
+  animation-name: slide-right-2;
+  animation-duration: .5s;
 }
-.slide-4 {
-  animation-name: slide-4;
-  animation-duration: .2s;
+.slide-left-3 {
+  animation-name: slide-left-3;
+  animation-duration: .5s;
+}
+.slide-right-3 {
+  animation-name: slide-right-3;
+  animation-duration: .5s;
+}
+.slide-left-4 {
+  animation-name: slide-left-4;
+  animation-duration: .5s;
+}
+.slide-right-4 {
+  animation-name: slide-right-4;
+  animation-duration: .5s;
+}
+.slide-left-5 {
+  animation-name: slide-left-5;
+  animation-duration: .5s;
+}
+.slide-right-5 {
+  animation-name: slide-right-5;
+  animation-duration: .5s;
 }
 
-.carousel-left-0 {
+.carousel-left0 {
   margin-left: -100%;
 }
 .carousel-left-1 {
@@ -94,50 +114,121 @@ body, html {
   margin-left: -500%;
 }
 
-.carousel-right-0 {
-  margin-left: 100%;
+.carousel-right0 {
+  margin-left: -500%;
 }
 .carousel-right-1 {
-  margin-left: 200%;
+  margin-left: -400%;
 }
 .carousel-right-2 {
-  margin-left: 300%;
+  margin-left: -300%;
 }
 .carousel-right-3 {
-  margin-left: 400%;
+  margin-left: -200%;
 }
 .carousel-right-4 {
-  margin-left: 500%;
+  margin-left: -100%;
 }
 
-@keyframes slide-1 {
-  to {
-    margin-left: -100%;
+@keyframes slide-left-1 {
+  from {
+    transform: translateX(0%);
     opacity: 0;
   }
-}
-@keyframes slide-2 {
+
   to {
-    margin-left: -200%;
-    opacity: 0;
+    transform: translateX(100%);
   }
 }
-@keyframes slide-3 {
-  to {
-    margin-left: -300%;
+
+@keyframes slide-right-1 {
+  from {
+    transform: translateX(-500%);
     opacity: 0;
   }
-}
-@keyframes slide-4 {
+
   to {
-    margin-left: -400%;
-    opacity: 0;
+    transform: translateX(0%);
   }
 }
-@keyframes slide-5 {
-  to {
-    margin-left: -500%;
+@keyframes slide-left-2 {
+  from {
+    transform: translateX(0%);
     opacity: 0;
+  }
+
+  to {
+    transform: translateX(200%);
+  }
+}
+@keyframes slide-right-2 {
+  from {
+    transform: translateX(-400%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes slide-left-3 {
+  from {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(300%);
+  }
+}
+@keyframes slide-right-3 {
+  from {
+    transform: translateX(-300%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes slide-left-4 {
+  from {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(400%);
+  }
+}
+@keyframes slide-right-4 {
+  from {
+    transform: translateX(-200%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes slide-left-5 {
+  from {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(500%);
+  }
+}
+@keyframes slide-right-5 {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
   }
 }
 

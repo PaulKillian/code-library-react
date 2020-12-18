@@ -43,7 +43,9 @@ export default class VideoCards extends React.Component {
         console.log(c)
         return { carousel: c }
       })
-    } else if (this.state.carousel === 4) {
+    } else if (this.state.carousel === 4 && event.target.id === 'left') {
+      this.carouselLeft()
+    } else if (this.state.carousel === 4 ) {
       this.setState((previousState) => {
         let c = previousState.carousel
         c -= 4
@@ -54,56 +56,61 @@ export default class VideoCards extends React.Component {
       this.setState((previousState) => {
         let c = previousState.carousel
         c -= 1
+        let clickState = c.toString()
         console.log(c)
-        return { carousel: c }
+        return {
+          carousel: c,
+          click: clickState
+        }
       })
     } else {
       console.log('insideRight')
       this.setState((previousState) => {
         let c = previousState.carousel
         c += 1
+        let clickState = c.toString()
         console.log(c)
-        return { carousel: c }
+        return {
+          carousel: c,
+          click: clickState
+        }
       })
     }
     (event.target.id === 'left') ? this.carouselLeft() : this.carouselRight()
   }
 
   carouselLeft() {
-    const carousel = document.getElementById('carousel');
-    if (this.state.carousel === 1) {
-      carousel.className = `flex`;
-    } else if (this.state.carousel >= 0) {
-      const carouselPosition = `carousel-left-${this.state.carousel}`;
-      const carouselSlidePosition = `slide-${this.state.carousel}`;
+    console.log(this.state.carousel)
+    const update = this.state.carousel - 1
+    if (this.state.carousel <= 0) {
+      const carouselPosition = `carousel-left${update}`;
+      const carouselSlidePosition = `slide-left${update}`;
       carousel.className = `flex ${carouselSlidePosition}`;
       carousel.classList.remove(`${carouselPosition}`);
-      setTimeout(function () { carousel.classList.add(`${carouselPosition}`); }, 200);
+      setTimeout(function () { carousel.classList.add(`${carouselPosition}`); }, 500);
     } else {
-      const carouselPosition = `carousel-left${this.state.carousel}`;
-      const carouselSlidePosition = `slide${this.state.carousel}`;
+      const carouselPosition = `carousel-right-${update}`;
+      const carouselSlidePosition = `slide-right-${update}`;
       carousel.className = `flex ${carouselSlidePosition}`;
       carousel.classList.remove(`${carouselPosition}`);
-      setTimeout(function () { carousel.classList.add(`${carouselPosition}`); }, 200);
+      setTimeout(function () { carousel.classList.add(`${carouselPosition}`); }, 500);
     }
   }
 
   carouselRight() {
-    const carousel = document.getElementById('carousel');
-    if (this.state.carousel === -1) {
-      carousel.className = `flex`;
-    } else if (this.state.carousel >= 0) {
-      const carouselPosition = `carousel-right-${this.state.carousel}`;
-      const carouselSlidePosition = `slide-${this.state.carousel}`;
+    const update = this.state.carousel + 1
+    if (this.state.carousel >= 0) {
+      const carouselPosition = `carousel-right-${update}`;
+      const carouselSlidePosition = `slide-right-${update}`;
       carousel.className = `flex ${carouselSlidePosition}`;
       carousel.classList.remove(`${carouselPosition}`);
-      setTimeout(function () { carousel.classList.add(`${carouselPosition}`); }, 200);
+      setTimeout(function () { carousel.classList.add(`${carouselPosition}`); }, 500);
     } else {
-      const carouselPosition = `carousel-right${this.state.carousel}`;
-      const carouselSlidePosition = `slide${this.state.carousel}`;
+      const carouselPosition = `carousel-left${update}`;
+      const carouselSlidePosition = `slide-left${update}`;
       carousel.className = `flex ${carouselSlidePosition}`;
       carousel.classList.remove(`${carouselPosition}`);
-      setTimeout(function () { carousel.classList.add(`${carouselPosition}`); }, 200);
+      setTimeout(function () { carousel.classList.add(`${carouselPosition}`); }, 500);
     }
   }
 
