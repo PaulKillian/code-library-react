@@ -44,6 +44,7 @@ export default class VideoCards extends React.Component {
         return { carousel: c }
       })
     } else if (this.state.carousel === 4 && event.target.id === 'left') {
+
       let c = 4
       this.setState({ carousel: c });
       this.carouselLeft()
