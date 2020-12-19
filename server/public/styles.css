@@ -57,6 +57,14 @@ body, html {
   margin-left: 1px;
 }
 
+.slide-left-0 {
+  animation-name: slide-left-0;
+  animation-duration: .5s;
+}
+.slide-right-0 {
+  animation-name: slide-right-0;
+  animation-duration: .5s;
+}
 .slide-left-1 {
   animation-name: slide-left-1;
   animation-duration: .5s;
@@ -83,18 +91,10 @@ body, html {
 }
 .slide-left-4 {
   animation-name: slide-left-4;
-  animation-duration: .5s;
+  animation-duration: .4s;
 }
 .slide-right-4 {
   animation-name: slide-right-4;
-  animation-duration: .5s;
-}
-.slide-left-5 {
-  animation-name: slide-left-5;
-  animation-duration: .5s;
-}
-.slide-right-5 {
-  animation-name: slide-right-5;
   animation-duration: .5s;
 }
 
@@ -114,23 +114,23 @@ body, html {
   margin-left: -500%;
 }
 
-.carousel-right0 {
+.carousel-right-1 {
   margin-left: -500%;
 }
-.carousel-right-1 {
+.carousel-right-2 {
   margin-left: -400%;
 }
-.carousel-right-2 {
+.carousel-right-3 {
   margin-left: -300%;
 }
-.carousel-right-3 {
+.carousel-right-4 {
   margin-left: -200%;
 }
-.carousel-right-4 {
+.carousel-right-5 {
   margin-left: -100%;
 }
 
-@keyframes slide-left-1 {
+@keyframes slide-left-0 {
   from {
     transform: translateX(0%);
     opacity: 0;
@@ -141,9 +141,29 @@ body, html {
   }
 }
 
-@keyframes slide-right-1 {
+@keyframes slide-right-0 {
   from {
     transform: translateX(-500%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes slide-left-1 {
+  from {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(200%);
+  }
+}
+@keyframes slide-right-1 {
+  from {
+    transform: translateX(-400%);
     opacity: 0;
   }
 
@@ -158,12 +178,12 @@ body, html {
   }
 
   to {
-    transform: translateX(200%);
+    transform: translateX(300%);
   }
 }
 @keyframes slide-right-2 {
   from {
-    transform: translateX(-400%);
+    transform: translateX(-300%);
     opacity: 0;
   }
 
@@ -178,12 +198,12 @@ body, html {
   }
 
   to {
-    transform: translateX(300%);
+    transform: translateX(400%);
   }
 }
 @keyframes slide-right-3 {
   from {
-    transform: translateX(-300%);
+    transform: translateX(-200%);
     opacity: 0;
   }
 
@@ -198,30 +218,10 @@ body, html {
   }
 
   to {
-    transform: translateX(400%);
-  }
-}
-@keyframes slide-right-4 {
-  from {
-    transform: translateX(-200%);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateX(0%);
-  }
-}
-@keyframes slide-left-5 {
-  from {
-    transform: translateX(0%);
-    opacity: 0;
-  }
-
-  to {
     transform: translateX(500%);
   }
 }
-@keyframes slide-right-5 {
+@keyframes slide-right-4 {
   from {
     transform: translateX(-100%);
     opacity: 0;
