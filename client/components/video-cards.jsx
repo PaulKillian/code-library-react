@@ -10,10 +10,8 @@ export default class VideoCards extends React.Component {
     this.state = {
       videoURLS: [],
       carousel: 0,
-      click: ''
+      id: ''
     };
-    this.carouselLeft = this.carouselLeft.bind(this);
-    this.carouselRight = this.carouselRight.bind(this);
     this.updateCarouselState = this.updateCarouselState.bind(this)
   }
 
@@ -32,88 +30,53 @@ export default class VideoCards extends React.Component {
   //         }
   //       this.setState({ videoURLS: ids });
   //     });
-
   // }
 
   updateCarouselState(event) {
-    if (this.state.carousel === -4) {
+    console.log(this.state.id)
+    const newId = event.target.id
+    if (this.state.carousel < -5 && newId === 'left') {
       this.setState((previousState) => {
-        let c = previousState.carousel
-        c += 4
-        console.log(c)
-        return { carousel: c }
+        let reset = previousState.carousel
+        reset -= 1
+        return { carousel: reset }
       })
-    } else if (this.state.carousel === 4 && event.target.id === 'left') {
-
-      let c = 4
-      this.setState({ carousel: c });
-      this.carouselLeft()
-    } else if (this.state.carousel === 4 ) {
+    } else if (this.state.carousel > 5 && newId === 'right') {
       this.setState((previousState) => {
-        let c = previousState.carousel
-        c -= 4
-        console.log(c)
-        return { carousel: c }
+        let reset = previousState.carousel
+        reset = 1
+        return { carousel: reset }
       })
-    } else if (event.target.id === 'left') {
+    } else if (this.state.carousel === -5 && newId === 'right') {
       this.setState((previousState) => {
-        let c = previousState.carousel
-        c -= 1
-        let clickState = c.toString()
-        console.log(c)
+        let reset = previousState.carousel
+        reset += 1
+        return { carousel: reset }
+      })
+    } else if (this.state.carousel === -5) {
+      this.setState((previousState) => {
+        let reset = previousState.carousel
+        reset = -1
+        return { carousel: reset }
+      })
+    } else if (this.state.carousel < 6 && event.target.id === 'left') {
+      this.setState((previousState) => {
+        let backToTheLeft = previousState.carousel
+        backToTheLeft -= 1
         return {
-          carousel: c,
-          click: clickState
+          carousel: backToTheLeft,
+          id: newId
         }
       })
-    } else {
-      console.log('insideRight')
+    } else if (this.state.carousel < 6 && event.target.id === 'right') {
       this.setState((previousState) => {
-        let c = previousState.carousel
-        c += 1
-        let clickState = c.toString()
-        console.log(c)
+        let backToTheRight = previousState.carousel
+        backToTheRight += 1
         return {
-          carousel: c,
-          click: clickState
+          carousel: backToTheRight,
+          id: newId
         }
       })
-    }
-    (event.target.id === 'left') ? this.carouselLeft() : this.carouselRight()
-  }
-
-  carouselLeft() {
-    console.log(this.state.carousel)
-    const update = this.state.carousel - 1
-    if (this.state.carousel <= 0) {
-      const carouselPosition = `carousel-left${update}`;
-      const carouselSlidePosition = `slide-left${update}`;
-      carousel.className = `flex ${carouselSlidePosition}`;
-      carousel.classList.remove(`${carouselPosition}`);
-      setTimeout(function () { carousel.classList.add(`${carouselPosition}`); }, 500);
-    } else {
-      const carouselPosition = `carousel-right-${update}`;
-      const carouselSlidePosition = `slide-right-${update}`;
-      carousel.className = `flex ${carouselSlidePosition}`;
-      carousel.classList.remove(`${carouselPosition}`);
-      setTimeout(function () { carousel.classList.add(`${carouselPosition}`); }, 500);
-    }
-  }
-
-  carouselRight() {
-    const update = this.state.carousel + 1
-    if (this.state.carousel >= 0) {
-      const carouselPosition = `carousel-right-${update}`;
-      const carouselSlidePosition = `slide-right-${update}`;
-      carousel.className = `flex ${carouselSlidePosition}`;
-      carousel.classList.remove(`${carouselPosition}`);
-      setTimeout(function () { carousel.classList.add(`${carouselPosition}`); }, 500);
-    } else {
-      const carouselPosition = `carousel-left${update}`;
-      const carouselSlidePosition = `slide-left${update}`;
-      carousel.className = `flex ${carouselSlidePosition}`;
-      carousel.classList.remove(`${carouselPosition}`);
-      setTimeout(function () { carousel.classList.add(`${carouselPosition}`); }, 500);
     }
   }
 
@@ -132,18 +95,93 @@ export default class VideoCards extends React.Component {
   }
 
   render() {
-    return (
-      <Suspense fallback={renderLoader()}>
-        <button id="left" onClick={this.updateCarouselState}>click</button>
-        <button id="right" onClick={this.updateCarouselState}>click</button>
-        <div id="carousel" className="flex">
-          {this.state.videoURLS.map(video => {
-            return (
-              <Card src={video.URL} />
-            );
-          })}
-        </div>
-      </Suspense>
-    );
+    console.log(this.state.carousel)
+    console.log(this.state.id)
+    const carouselPositionLeft = `carousel-left${this.state.carousel}`;
+    const carouselSlidePositionLeft = `slide-left${this.state.carousel}`;
+    const carouselPositionRight = `carousel-right-${this.state.carousel}`;
+    const carouselSlidePositionRight = `slide-right-${this.state.carousel}`;
+    if (this.state.id === "" || this.state.carousel === 6) {
+      return (
+        <Suspense fallback={renderLoader()}>
+          <button id="left" onClick={this.updateCarouselState}>click</button>
+          <button id="right" onClick={this.updateCarouselState}>click</button>
+          <div id="carousel" className={`flex`}>
+            {this.state.videoURLS.map(video => {
+              return (
+                <Card src={video.URL}
+                  key={video.URL}
+                />
+              );
+            })}
+          </div>
+        </Suspense>
+      );
+    }
+    if (this.state.carousel <= 0 && this.state.id === "left") {
+      return (
+        <Suspense fallback={renderLoader()}>
+          <button id="left" onClick={this.updateCarouselState}>click</button>
+          <button id="right" onClick={this.updateCarouselState}>click</button>
+          <div id="carousel" className={`flex ${carouselPositionLeft}`}>
+            {this.state.videoURLS.map(video => {
+              return (
+                <Card src={video.URL}
+                  key={video.URL}
+                />
+              );
+            })}
+          </div>
+        </Suspense>
+      );
+    } else if (this.state.carousel <= 0 && this.state.id === "right") {
+      return (
+        <Suspense fallback={renderLoader()}>
+          <button id="left" onClick={this.updateCarouselState}>click</button>
+          <button id="right" onClick={this.updateCarouselState}>click</button>
+          <div id="carousel" className={`flex ${carouselPositionLeft}`}>
+            {this.state.videoURLS.map(video => {
+              return (
+                <Card src={video.URL}
+                  key={video.URL}
+                />
+              );
+            })}
+          </div>
+        </Suspense>
+      );
+    } else if (this.state.carousel >= 0 && this.state.id === "left") {
+      return (
+        <Suspense fallback={renderLoader()}>
+          <button id="left" onClick={this.updateCarouselState}>click</button>
+          <button id="right" onClick={this.updateCarouselState}>click</button>
+          <div id="carousel" className={`flex ${carouselPositionRight}`}>
+            {this.state.videoURLS.map(video => {
+              return (
+                <Card src={video.URL}
+                  key={video.URL}
+                />
+              );
+            })}
+          </div>
+        </Suspense>
+      );
+    } else if (this.state.carousel >= 0 && this.state.id === "right") {
+      return (
+        <Suspense fallback={renderLoader()}>
+          <button id="left" onClick={this.updateCarouselState}>click</button>
+          <button id="right" onClick={this.updateCarouselState}>click</button>
+          <div id="carousel" className={`flex ${carouselPositionRight}`}>
+            {this.state.videoURLS.map(video => {
+              return (
+                <Card src={video.URL}
+                  key={video.URL}
+                />
+              );
+            })}
+          </div>
+        </Suspense>
+      );
+    }
   }
 }
