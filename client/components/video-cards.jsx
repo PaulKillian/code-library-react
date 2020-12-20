@@ -170,7 +170,7 @@ export default class VideoCards extends React.Component {
         <Suspense fallback={renderLoader()}>
           <button id="left" onClick={this.updateCarouselState}>click</button>
           <button id="right" onClick={this.updateCarouselState}>click</button>
-          <div id="carousel" className={`flex ${carouselPositionRight}`}>
+          <div id="carousel" className={`flex ${carouselPositionRight} ${carouselSlidePositionRight}`}>
             {this.state.videoURLS.map(video => {
               return (
                 <Card src={video.URL}
