@@ -1,6 +1,5 @@
 import React, { lazy, Suspense } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Carousel from 'react-bootstrap/Carousel';
 const Card = lazy(() => import('./card'));
 const renderLoader = () => <p>...Loading</p>;
 
@@ -12,7 +11,7 @@ export default class VideoCards extends React.Component {
       carousel: 0,
       id: ''
     };
-    this.updateCarouselState = this.updateCarouselState.bind(this)
+    this.updateCarouselState = this.updateCarouselState.bind(this);
   }
 
   // componentDidMount() {
@@ -33,52 +32,52 @@ export default class VideoCards extends React.Component {
   // }
 
   updateCarouselState(event) {
-    const newId = event.target.id
+    const newId = event.target.id;
     if (this.state.carousel > -6 && newId === 'left') {
-      this.setState((previousState) => {
-        let reset = previousState.carousel
-        reset -= 1
+      this.setState(previousState => {
+        let reset = previousState.carousel;
+        reset -= 1;
         return {
           carousel: reset,
           id: newId
-        }
-      })
+        };
+      });
     } else if (this.state.carousel === 6 && newId === 'right') {
-      this.setState((previousState) => {
-        let reset = previousState.carousel
-        reset = 1
-        return { carousel: reset }
-      })
+      this.setState(previousState => {
+        let reset = previousState.carousel;
+        reset = 1;
+        return { carousel: reset };
+      });
     } else if (this.state.carousel === -6 && newId === 'right') {
-      this.setState((previousState) => {
-        let reset = previousState.carousel
-        reset += 1
-        return { carousel: reset }
-      })
+      this.setState(previousState => {
+        let reset = previousState.carousel;
+        reset += 1;
+        return { carousel: reset };
+      });
     } else if (this.state.carousel === -6) {
-      this.setState((previousState) => {
-        let reset = previousState.carousel
-        reset = -1
-        return { carousel: reset }
-      })
+      this.setState(previousState => {
+        let reset = previousState.carousel;
+        reset = -1;
+        return { carousel: reset };
+      });
     } else if (this.state.carousel === -5 && event.target.id === 'left') {
-      this.setState((previousState) => {
-        let backToTheLeft = previousState.carousel
-        backToTheLeft = -1
+      this.setState(previousState => {
+        let backToTheLeft = previousState.carousel;
+        backToTheLeft = -1;
         return {
           carousel: backToTheLeft,
           id: newId
-        }
-      })
+        };
+      });
     } else if (this.state.carousel < 6 && event.target.id === 'right') {
-      this.setState((previousState) => {
-        let backToTheRight = previousState.carousel
-        backToTheRight += 1
+      this.setState(previousState => {
+        let backToTheRight = previousState.carousel;
+        backToTheRight += 1;
         return {
           carousel: backToTheRight,
           id: newId
-        }
-      })
+        };
+      });
     }
   }
 
@@ -101,12 +100,12 @@ export default class VideoCards extends React.Component {
     const carouselSlidePositionLeft = `slide-left${this.state.carousel}`;
     const carouselPositionRight = `carousel-right-${this.state.carousel}`;
     const carouselSlidePositionRight = `slide-right-${this.state.carousel}`;
-    if (this.state.id === "" || this.state.carousel === 6 || this.state.carousel === -6) {
+    if (this.state.id === '' || this.state.carousel === 6 || this.state.carousel === -6) {
       return (
         <Suspense fallback={renderLoader()}>
           <button id="left" onClick={this.updateCarouselState}>click</button>
           <button id="right" onClick={this.updateCarouselState}>click</button>
-          <div id="carousel" className={`flex`}>
+          <div id="carousel" className={'flex'}>
             {this.state.videoURLS.map(video => {
               return (
                 <Card src={video.URL}
@@ -117,7 +116,7 @@ export default class VideoCards extends React.Component {
           </div>
         </Suspense>
       );
-    } else if (this.state.carousel <= 0 && this.state.id === "left") {
+    } else if (this.state.carousel <= 0 && this.state.id === 'left') {
       return (
         <Suspense fallback={renderLoader()}>
           <button id="left" onClick={this.updateCarouselState}>click</button>
@@ -133,7 +132,7 @@ export default class VideoCards extends React.Component {
           </div>
         </Suspense>
       );
-    } else if (this.state.carousel <= 0 && this.state.id === "right") {
+    } else if (this.state.carousel <= 0 && this.state.id === 'right') {
       return (
         <Suspense fallback={renderLoader()}>
           <button id="left" onClick={this.updateCarouselState}>click</button>
@@ -149,7 +148,7 @@ export default class VideoCards extends React.Component {
           </div>
         </Suspense>
       );
-    } else if (this.state.carousel >= 0 && this.state.id === "left") {
+    } else if (this.state.carousel >= 0 && this.state.id === 'left') {
       return (
         <Suspense fallback={renderLoader()}>
           <button id="left" onClick={this.updateCarouselState}>click</button>
@@ -165,7 +164,7 @@ export default class VideoCards extends React.Component {
           </div>
         </Suspense>
       );
-    } else if (this.state.carousel >= 0 && this.state.id === "right") {
+    } else if (this.state.carousel >= 0 && this.state.id === 'right') {
       return (
         <Suspense fallback={renderLoader()}>
           <button id="left" onClick={this.updateCarouselState}>click</button>
