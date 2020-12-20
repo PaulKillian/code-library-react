@@ -1,5 +1,6 @@
 body, html {
   overflow-x: hidden;
+  background-attachment: fixed;
 }
 
 .top {
@@ -237,7 +238,7 @@ body, html {
 }
 
 
-
+/*
 .cards:not(:first-child) {
     margin-left: -50px;
 }
@@ -252,7 +253,7 @@ body, html {
   position: relative;
   left: 50px;
   transition: 0.4s ease-out;
-}
+} */
 
 .title {
   color: white;
@@ -279,13 +280,6 @@ video {
 	cursor: pointer;
 }
 
-.blur {
-  height: 200px;
-  background: rgba(194, 194, 194, 0.4);
-	backdrop-filter: blur(5px);
-	border-radius: 10px;
-	border: none;
-}
 
 .flex {
   display: flex;
@@ -295,4 +289,17 @@ video {
 
 .carousel-slide {
   margin: 50px 45px;
+}
+
+.glass {
+  width: 22rem;
+  height: auto;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, .15);
+  backdrop-filter: blur(5px);
+}
+
+.bg {
+  background:linear-gradient(45deg, #2F1C53, #A46DFF, #F6D1FD);
 }
