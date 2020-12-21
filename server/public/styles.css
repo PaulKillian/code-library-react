@@ -296,7 +296,7 @@ iframe:nth-of-type(5n) {
 }
 
 .glass {
-  /* width: 22.5rem; */
+  width: 22.5rem;
   /* height: auto; */
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
   border-radius: 5px;
@@ -306,4 +306,9 @@ iframe:nth-of-type(5n) {
 
 .bg {
   background:linear-gradient(45deg, #2F1C53, #A46DFF, #F6D1FD);
+}
+
+.shadow {
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+  border-radius: 5px;
 }

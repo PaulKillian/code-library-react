@@ -11,6 +11,7 @@ export default class VideoCards extends React.Component {
       videoURLS2: [],
       videoURLS3: [],
       videoURLS4: [],
+      // videoURLS5: [],
       carousel: 0,
       clickId: '',
       videoIds: []
@@ -88,7 +89,7 @@ export default class VideoCards extends React.Component {
             id: urls[i].videoId
           })
           // vidIds.push(urls[i].videoId)
-          if (placeholder.length === 5) {
+          if (placeholder.length === 4) {
             newUrls.push(placeholder)
             placeholder = []
           }
@@ -98,6 +99,7 @@ export default class VideoCards extends React.Component {
           videoURLS2: newUrls[1],
           videoURLS3: newUrls[2],
           videoURLS4: newUrls[3],
+          videoURLS5: newUrls[4]
         });
         })
   }
@@ -113,17 +115,19 @@ export default class VideoCards extends React.Component {
         <div>
           <button id="left" onClick={this.updateCarouselState}>click</button>
           <button id="right" onClick={this.updateCarouselState}>click</button>
-          <main id="carousel" className="flex glass mx-3 my-5 slide-left-0">
-            {this.state.videoURLS1.map(video => {
-              return (
-                <Suspense fallback={renderLoader()}>
-                  <Card src={video.URL}
-                    id={video.id}
-                    key={video.URL}
-                  />
-                </Suspense>
-              );
-            })}
+          <main id="carousel" className="mx-3 my-5 slide-left-0">
+            <div className="d-flex justify-content-around">
+              {this.state.videoURLS1.map(video => {
+                return (
+                  <Suspense fallback={renderLoader()}>
+                    <Card src={video.URL}
+                      id={video.id}
+                      key={video.URL}
+                    />
+                  </Suspense>
+                );
+              })}
+            </div>
           </main>
         </div>
       );
@@ -132,7 +136,7 @@ export default class VideoCards extends React.Component {
         <div>
           <button id="left" onClick={this.updateCarouselState}>click</button>
           <button id="right" onClick={this.updateCarouselState}>click</button>
-          <div id="carousel" className={`flex glass mx-3 my-5 slide-left-0`}>
+          <div id="carousel" className={`glass mx-3 my-5 slide-left-0`}>
             {this.state.videoURLS2.map(video => {
               return (
                 <Suspense fallback={renderLoader()}>
@@ -151,7 +155,7 @@ export default class VideoCards extends React.Component {
           <div>
           <button id="left" onClick={this.updateCarouselState}>click</button>
           <button id="right" onClick={this.updateCarouselState}>click</button>
-          <div id="carousel" className={`flex glass mx-3 my-5 slide-left-0`}>
+          <div id="carousel" className={`glass mx-3 my-5 slide-left-0`}>
             {this.state.videoURLS3.map(video => {
               return (
                 <Suspense fallback={renderLoader()}>
@@ -170,7 +174,7 @@ export default class VideoCards extends React.Component {
         <div>
           <button id="left" onClick={this.updateCarouselState}>click</button>
           <button id="right" onClick={this.updateCarouselState}>click</button>
-          <div id="carousel" className={`flex glass mx-3 my-5 slide-right-0`}>
+          <div id="carousel" className={`glass mx-3 my-5 slide-right-0`}>
             {this.state.videoURLS3.map(video => {
               return (
                 <Suspense fallback={renderLoader()}>
@@ -189,7 +193,7 @@ export default class VideoCards extends React.Component {
         <div>
           <button id="left" onClick={this.updateCarouselState}>click</button>
           <button id="right" onClick={this.updateCarouselState}>click</button>
-          <div id="carousel" className={`flex glass mx-3 my-5`}>
+          <div id="carousel" className={`glass mx-3 my-5`}>
             {this.state.videoURLS4.map(video => {
               return (
                 <Suspense fallback={renderLoader()}>
