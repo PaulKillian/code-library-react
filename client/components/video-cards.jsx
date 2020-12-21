@@ -7,9 +7,13 @@ export default class VideoCards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videoURLS: [],
+      videoURLS1: [],
+      videoURLS2: [],
+      videoURLS3: [],
+      videoURLS4: [],
       carousel: 0,
-      id: ''
+      clickId: '',
+      videoIds: []
     };
     this.updateCarouselState = this.updateCarouselState.bind(this);
   }
@@ -23,59 +27,44 @@ export default class VideoCards extends React.Component {
   //   })
   //     .then(res => res.json())
   //     .then(videos => {
-  //       let ids = []
+  //       let url = []
   //       for (let i = 0; i < videos.items.length; i++) {
-  //         ids.push(`https://www.youtube.com/embed/${videos.items[i].id.videoId}`)
+  //         // ids.push(`https://www.youtube.com/embed/${videos.items[i].id.videoId}`)
+  //         url.push(videos.items[i].id.videoId)
   //         }
-  //       this.setState({ videoURLS: ids });
+  //       this.setState({ videoId: url });
+  //       console.log("videoId", url)
   //     });
   // }
 
   updateCarouselState(event) {
-    const newId = event.target.id;
-    if (this.state.carousel > -6 && newId === 'left') {
+    if (this.state.carousel === -4 || this.state.carousel === 4) {
       this.setState(previousState => {
         let reset = previousState.carousel;
-        reset -= 1;
+        reset = 0;
         return {
           carousel: reset,
           id: newId
         };
       });
-    } else if (this.state.carousel === 6 && newId === 'right') {
+    }
+    const newId = event.target.id;
+    if (newId === 'left') {
       this.setState(previousState => {
         let reset = previousState.carousel;
-        reset = 1;
-        return { carousel: reset };
+        reset -= 1;
+        return {
+          carousel: reset,
+          clickId: newId
+        };
       });
-    } else if (this.state.carousel === -6 && newId === 'right') {
+    } else {
       this.setState(previousState => {
         let reset = previousState.carousel;
         reset += 1;
-        return { carousel: reset };
-      });
-    } else if (this.state.carousel === -6) {
-      this.setState(previousState => {
-        let reset = previousState.carousel;
-        reset = -1;
-        return { carousel: reset };
-      });
-    } else if (this.state.carousel === -5 && event.target.id === 'left') {
-      this.setState(previousState => {
-        let backToTheLeft = previousState.carousel;
-        backToTheLeft = -1;
         return {
-          carousel: backToTheLeft,
-          id: newId
-        };
-      });
-    } else if (this.state.carousel < 6 && event.target.id === 'right') {
-      this.setState(previousState => {
-        let backToTheRight = previousState.carousel;
-        backToTheRight += 1;
-        return {
-          carousel: backToTheRight,
-          id: newId
+          carousel: reset,
+          clickId: newId
         };
       });
     }
@@ -89,96 +78,130 @@ export default class VideoCards extends React.Component {
     })
       .then(res => res.json())
       .then(urls => {
+        console.log(urls)
+        const newUrls = []
+        const vidIds = []
+        let placeholder = []
+        for (let i = 0; i < urls.length; i++) {
+          placeholder.push({
+            url: urls[i].URL,
+            id: urls[i].videoId
+          })
+          // vidIds.push(urls[i].videoId)
+          if (placeholder.length === 5) {
+            newUrls.push(placeholder)
+            placeholder = []
+          }
+        }
         this.setState({
-          videoURLS: urls
+          videoURLS1: newUrls[0],
+          videoURLS2: newUrls[1],
+          videoURLS3: newUrls[2],
+          videoURLS4: newUrls[3],
         });
-      });
+        })
   }
 
   render() {
+    console.log(this.state.videoURLS1)
     const carouselPositionLeft = `carousel-left${this.state.carousel}`;
     const carouselSlidePositionLeft = `slide-left${this.state.carousel}`;
     const carouselPositionRight = `carousel-right-${this.state.carousel}`;
     const carouselSlidePositionRight = `slide-right-${this.state.carousel}`;
-    if (this.state.id === '' || this.state.carousel === 6 || this.state.carousel === -6) {
+    if (this.state.id === '' || this.state.carousel === -4 || this.state.carousel === 4 || this.state.carousel === 0) {
       return (
-        <Suspense fallback={renderLoader()}>
+        <div>
           <button id="left" onClick={this.updateCarouselState}>click</button>
           <button id="right" onClick={this.updateCarouselState}>click</button>
-          <div id="carousel" className="flex">
-            {this.state.videoURLS.map(video => {
+          <main id="carousel" className="flex glass mx-3 my-5 slide-left-0">
+            {this.state.videoURLS1.map(video => {
               return (
-                <Card src={video.URL}
-                  key={video.URL}
-                />
+                <Suspense fallback={renderLoader()}>
+                  <Card src={video.URL}
+                    id={video.id}
+                    key={video.URL}
+                  />
+                </Suspense>
               );
             })}
-          </div>
-        </Suspense>
+          </main>
+        </div>
       );
-    } else if (this.state.carousel <= 0 && this.state.id === 'left') {
+    } else if (this.state.carousel === -1 || this.state.carousel === 3) {
       return (
-        <Suspense fallback={renderLoader()}>
+        <div>
           <button id="left" onClick={this.updateCarouselState}>click</button>
           <button id="right" onClick={this.updateCarouselState}>click</button>
-          <div id="carousel" className={`flex ${carouselPositionLeft} ${carouselSlidePositionLeft}`}>
-            {this.state.videoURLS.map(video => {
+          <div id="carousel" className={`flex glass mx-3 my-5 slide-left-0`}>
+            {this.state.videoURLS2.map(video => {
               return (
-                <Card src={video.URL}
-                  key={video.URL}
-                />
+                <Suspense fallback={renderLoader()}>
+                  <Card src={video.URL}
+                    id={video.id}
+                    key={video.URL}
+                    />
+                </Suspense>
               );
             })}
           </div>
-        </Suspense>
+        </div>
       );
-    } else if (this.state.carousel <= 0 && this.state.id === 'right') {
+    } else if (this.state.carousel === -2) {
       return (
-        <Suspense fallback={renderLoader()}>
+          <div>
           <button id="left" onClick={this.updateCarouselState}>click</button>
           <button id="right" onClick={this.updateCarouselState}>click</button>
-          <div id="carousel" className={`flex ${carouselPositionLeft}`}>
-            {this.state.videoURLS.map(video => {
+          <div id="carousel" className={`flex glass mx-3 my-5 slide-left-0`}>
+            {this.state.videoURLS3.map(video => {
               return (
-                <Card src={video.URL}
-                  key={video.URL}
-                />
+                <Suspense fallback={renderLoader()}>
+                  <Card src={video.URL}
+                    id={video.id}
+                    key={video.URL}
+                    />
+                </Suspense>
               );
             })}
           </div>
-        </Suspense>
+        </div>
       );
-    } else if (this.state.carousel >= 0 && this.state.id === 'left') {
+    } else if (this.state.carousel === 2) {
       return (
-        <Suspense fallback={renderLoader()}>
+        <div>
           <button id="left" onClick={this.updateCarouselState}>click</button>
           <button id="right" onClick={this.updateCarouselState}>click</button>
-          <div id="carousel" className={`flex ${carouselPositionRight}`}>
-            {this.state.videoURLS.map(video => {
+          <div id="carousel" className={`flex glass mx-3 my-5 slide-right-0`}>
+            {this.state.videoURLS3.map(video => {
               return (
-                <Card src={video.URL}
-                  key={video.URL}
-                />
+                <Suspense fallback={renderLoader()}>
+                  <Card src={video.URL}
+                    id={video.id}
+                    key={video.URL}
+                  />
+                </Suspense>
               );
             })}
           </div>
-        </Suspense>
+        </div>
       );
-    } else if (this.state.carousel >= 0 && this.state.id === 'right') {
+    } else if (this.state.carousel === -3 || this.state.carousel === 1) {
       return (
-        <Suspense fallback={renderLoader()}>
+        <div>
           <button id="left" onClick={this.updateCarouselState}>click</button>
           <button id="right" onClick={this.updateCarouselState}>click</button>
-          <div id="carousel" className={`flex ${carouselPositionRight} ${carouselSlidePositionRight}`}>
-            {this.state.videoURLS.map(video => {
+          <div id="carousel" className={`flex glass mx-3 my-5`}>
+            {this.state.videoURLS4.map(video => {
               return (
-                <Card src={video.URL}
-                  key={video.URL}
-                />
+                <Suspense fallback={renderLoader()}>
+                  <Card src={video.URL}
+                    id={video.id}
+                    key={video.URL}
+                  />
+                </Suspense>
               );
             })}
           </div>
-        </Suspense>
+        </div>
       );
     }
   }

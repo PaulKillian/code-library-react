@@ -29,7 +29,8 @@ app.get('/api/add-video/:subject', (req, res, next) => {
     subject = subject.toUpperCase();
   }
   const getVideo = `
-    select "URL"
+    select "URL",
+          "videoId"
       from "video"
       where "subject" = $1
   `;
