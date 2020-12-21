@@ -60,43 +60,43 @@ body, html {
 
 .slide-left-0 {
   animation-name: slide-left-0;
-  animation-duration: .10s;
+  animation-duration: 1s;
 }
 .slide-right-0 {
   animation-name: slide-right-0;
-  animation-duration: .10s;
+  animation-duration: 1s;
 }
 .slide-left-1 {
   animation-name: slide-left-1;
-  animation-duration: .10s;
+  animation-duration: 1s;
 }
 .slide-right-1 {
   animation-name: slide-right-1;
-  animation-duration: .10s;
+  animation-duration: 1s;
 }
 .slide-left-2 {
   animation-name: slide-left-2;
-  animation-duration: .10s;
+  animation-duration: 1s;
 }
 .slide-right-2 {
   animation-name: slide-right-2;
-  animation-duration: .10s;
+  animation-duration: 1s;
 }
 .slide-left-3 {
   animation-name: slide-left-3;
-  animation-duration: .10s;
+  animation-duration: 1s;
 }
 .slide-right-3 {
   animation-name: slide-right-3;
-  animation-duration: .10s;
+  animation-duration: 1s;
 }
 .slide-left-4 {
   animation-name: slide-left-4;
-  animation-duration: .4s;
+  animation-duration: 1s;
 }
 .slide-right-4 {
   animation-name: slide-right-4;
-  animation-duration: .10s;
+  animation-duration: 1s;
 }
 
 .carousel-left-1 {
@@ -138,18 +138,20 @@ body, html {
   }
 
   to {
-    transform: translateX(100%);
+    transform: translateX(-100%);
+    opacity: .5;
   }
 }
 
 @keyframes slide-right-0 {
   from {
-    transform: translateX(-500%);
+    transform: translateX(-100%);
     opacity: 0;
   }
 
   to {
     transform: translateX(0%);
+    opacity: .5;
   }
 }
 @keyframes slide-left-1 {
@@ -159,7 +161,7 @@ body, html {
   }
 
   to {
-    transform: translateX(200%);
+    transform: translateX(-100%);
   }
 }
 @keyframes slide-right-1 {
@@ -283,16 +285,19 @@ video {
 
 .flex {
   display: flex;
-  flex-direction: row;
 }
 
 .carousel-slide {
-  margin: 50px 45px;
+  margin: 5px 5px;
+}
+
+iframe:nth-of-type(5n) {
+  margin-right: 20px;
 }
 
 .glass {
-  width: 22.5rem;
-  height: auto;
+  /* width: 22.5rem; */
+  /* height: auto; */
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
   border-radius: 5px;
   background-color: rgba(255, 255, 255, .15);
