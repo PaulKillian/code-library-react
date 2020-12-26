@@ -11,7 +11,6 @@ export default class VideoCards extends React.Component {
       videoURLS2: [],
       videoURLS3: [],
       videoURLS4: [],
-      // videoURLS5: [],
       carousel: 0,
       clickId: '',
       videoIds: []
@@ -88,7 +87,6 @@ export default class VideoCards extends React.Component {
             url: urls[i].URL,
             id: urls[i].videoId
           })
-          // vidIds.push(urls[i].videoId)
           if (placeholder.length === 4) {
             newUrls.push(placeholder)
             placeholder = []
